@@ -1,0 +1,138 @@
+{
+  "observations_raw": 4177,
+  "observations_model": 3957,
+  "date_start": "2010-10-18",
+  "date_end": "2026-07-14",
+  "n_features": 35,
+  "features": [
+    "log_return_1d",
+    "return_5d",
+    "return_10d",
+    "return_21d",
+    "return_63d",
+    "rv_5d",
+    "rv_10d",
+    "rv_21d",
+    "rv_63d",
+    "ret_mean_21d",
+    "ret_std_21d",
+    "ret_skew_63d",
+    "dist_ma_21d",
+    "dist_ma_63d",
+    "dist_ma_200d",
+    "parkinson_10d",
+    "parkinson_21d",
+    "garman_klass_21d",
+    "vix",
+    "vix_change_1d",
+    "vix_change_5d",
+    "vix_pct_change_1d",
+    "vix_mean_21d",
+    "vix_std_21d",
+    "vix_rv_spread",
+    "drawdown",
+    "max_drawdown_63d",
+    "neg_return_frac_21d",
+    "downside_vol_21d",
+    "volume_change_1d",
+    "relative_volume_21d",
+    "volume_trend_5_21",
+    "yield_10y",
+    "yield_10y_change_21d",
+    "term_spread"
+  ],
+  "target": "rv_5d_forward",
+  "split": {
+    "train": [
+      "2010-10-18",
+      "2021-10-15",
+      2769
+    ],
+    "val": [
+      "2021-10-18",
+      "2024-02-28",
+      594
+    ],
+    "test": [
+      "2024-02-29",
+      "2026-07-14",
+      594
+    ]
+  },
+  "xgb_params": {
+    "max_depth": 3,
+    "learning_rate": 0.03,
+    "n_estimators": 200,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8
+  },
+  "n_walk_forward_folds": 10,
+  "results": [
+    {
+      "Model": "Random Forest",
+      "MAE": 0.04174029870697342,
+      "RMSE": 0.07061751677301391,
+      "R2": 0.4108738961502475,
+      "QLIKE": 0.35935516847164256
+    },
+    {
+      "Model": "Linear Regression",
+      "MAE": 0.04782299375331703,
+      "RMSE": 0.07592317772311981,
+      "R2": 0.31902348132460245,
+      "QLIKE": 0.3976214976750589
+    },
+    {
+      "Model": "XGBoost",
+      "MAE": 0.04541188547969134,
+      "RMSE": 0.07853023487669895,
+      "R2": 0.2714536684016118,
+      "QLIKE": 0.3742789025349725
+    },
+    {
+      "Model": "HAR",
+      "MAE": 0.04948426711711932,
+      "RMSE": 0.08240232086364684,
+      "R2": 0.19783765680414167,
+      "QLIKE": 0.5150188887855892
+    },
+    {
+      "Model": "GARCH(1,1)",
+      "MAE": 0.053507404357493835,
+      "RMSE": 0.08513095256717643,
+      "R2": 0.14383322786581776,
+      "QLIKE": 0.44905132964634237
+    },
+    {
+      "Model": "Naive (last 5d RV)",
+      "MAE": 0.0557628605654291,
+      "RMSE": 0.0939832305194954,
+      "R2": -0.043479979992449014,
+      "QLIKE": 0.9710928688176393
+    },
+    {
+      "Model": "Naive (last 21d RV)",
+      "MAE": 0.05727754749507668,
+      "RMSE": 0.09697016024505013,
+      "R2": -0.11086071785536333,
+      "QLIKE": 0.5991273569485618
+    }
+  ],
+  "har_coefficients": {
+    "rv_5d": 0.06185,
+    "rv_21d": 0.011633,
+    "rv_63d": 0.004916
+  },
+  "top_features": {
+    "rv_5d": 0.17167699337005615,
+    "vix": 0.13059699535369873,
+    "drawdown": 0.08714299649000168,
+    "rv_10d": 0.06510599702596664,
+    "ret_mean_21d": 0.06481900066137314,
+    "vix_std_21d": 0.04563400149345398,
+    "dist_ma_200d": 0.042319998145103455,
+    "parkinson_10d": 0.0416329987347126,
+    "downside_vol_21d": 0.03721100091934204,
+    "return_10d": 0.03546199947595596
+  }
+}

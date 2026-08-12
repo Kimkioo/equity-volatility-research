@@ -1,0 +1,21 @@
+# Core scientific stack
+pandas>=2.0
+numpy>=1.26
+scipy>=1.11
+
+# Modeling
+scikit-learn>=1.4
+xgboost>=2.0
+statsmodels>=0.14
+arch>=6.0
+
+# Data
+yfinance>=0.2.40
+
+# Visualization & notebooks
+matplotlib>=3.8
+jupyter
+ipykernel
+
+# Testing
+pytest>=8.0
